@@ -75,8 +75,8 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-4 leading-relaxed"
         >
-          El 87% de las iniciativas de IA fracasan porque las organizaciones
-          implantan herramientas sin transformar las personas que las usan.
+          Más del 80% de las iniciativas de IA fracasan porque las organizaciones
+          implementan herramientas sin transformar a las personas que las usan.
         </motion.p>
 
         <motion.p
@@ -119,7 +119,7 @@ export default function HeroSection() {
           className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto"
         >
           {[
-            { number: "+200", label: "Organizaciones transformadas", color: "text-blue-400" },
+            { number: "+100", label: "Líderes impactados", color: "text-blue-400" },
             { number: "5", label: "Fases de adopción progresiva", color: "text-violet-400" },
             { number: "10", label: "Perfiles de liderazgo IA", color: "text-amber-400" },
           ].map((stat, i) => (

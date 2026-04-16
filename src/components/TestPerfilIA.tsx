@@ -2,26 +2,34 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  Radar,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
 
 const QUESTIONS = [
   {
     id: 1,
     text: "¿Cómo reaccionas cuando tu empresa anuncia la implementación de una nueva herramienta de IA?",
     options: [
-      { text: "La instalo antes de la capacitación oficial", value: "A" },
       { text: "Analizo el ROI antes de adoptarla", value: "B" },
-      { text: "Pregunto cómo mejora la colaboración del equipo", value: "C" },
       { text: "Espero ver resultados en otros antes de usarla", value: "D" },
+      { text: "La instalo antes de la capacitación oficial", value: "A" },
+      { text: "Pregunto cómo mejora la colaboración del equipo", value: "C" },
     ],
   },
   {
     id: 2,
     text: "¿Qué describe mejor tu relación actual con herramientas de IA?",
     options: [
-      { text: "Las uso a diario y experimento con nuevas constantemente", value: "A" },
-      { text: "Las uso estratégicamente cuando hay un caso de uso claro", value: "B" },
       { text: "Prefiero usarlas en proyectos colaborativos", value: "C" },
+      { text: "Las uso a diario y experimento con nuevas constantemente", value: "A" },
       { text: "Las conozco pero no las he integrado a mi rutina", value: "D" },
+      { text: "Las uso estratégicamente cuando hay un caso de uso claro", value: "B" },
     ],
   },
   {
@@ -29,59 +37,59 @@ const QUESTIONS = [
     text: "Cuando un proceso de IA da resultados inesperados, ¿qué haces?",
     options: [
       { text: "Itero rápidamente para mejorar el prompt o modelo", value: "A" },
-      { text: "Documento el fallo y analizo el impacto en el negocio", value: "B" },
       { text: "Lo comparto con el equipo para aprender juntos", value: "C" },
       { text: "Vuelvo al proceso manual hasta entender qué pasó", value: "D" },
+      { text: "Documento el fallo y analizo el impacto en el negocio", value: "B" },
     ],
   },
   {
     id: 4,
     text: "¿Cómo defines el éxito de la IA en tu organización?",
     options: [
-      { text: "Velocidad de innovación y ventaja competitiva", value: "A" },
-      { text: "Eficiencia medible y reducción de costos", value: "B" },
       { text: "Mejora en colaboración y satisfacción del equipo", value: "C" },
       { text: "Estabilidad y ausencia de errores críticos", value: "D" },
+      { text: "Eficiencia medible y reducción de costos", value: "B" },
+      { text: "Velocidad de innovación y ventaja competitiva", value: "A" },
     ],
   },
   {
     id: 5,
     text: "¿Qué papel juegas cuando tu equipo debate sobre IA?",
     options: [
-      { text: "Propongo ideas y prototipos antes que los demás", value: "A" },
-      { text: "Evalúo viabilidad y alinéo con objetivos estratégicos", value: "B" },
-      { text: "Facilito el consenso y aseguro que todos participen", value: "C" },
       { text: "Señalo riesgos y pido más evidencia", value: "D" },
+      { text: "Evalúo viabilidad y alinéo con objetivos estratégicos", value: "B" },
+      { text: "Propongo ideas y prototipos antes que los demás", value: "A" },
+      { text: "Facilito el consenso y aseguro que todos participen", value: "C" },
     ],
   },
   {
     id: 6,
     text: "¿Cómo aprendes mejor sobre Inteligencia Artificial?",
     options: [
+      { text: "Con formación estructurada y conceptos validados", value: "D" },
+      { text: "En talleres grupales y proyectos colaborativos", value: "C" },
       { text: "Experimentando directamente sin guía previa", value: "A" },
       { text: "Con casos de estudio y aplicaciones de negocio reales", value: "B" },
-      { text: "En talleres grupales y proyectos colaborativos", value: "C" },
-      { text: "Con formación estructurada y conceptos validados", value: "D" },
     ],
   },
   {
     id: 7,
     text: "¿Cuál es tu mayor preocupación respecto a la IA en tu empresa?",
     options: [
-      { text: "Que nos quedemos atrás respecto a la competencia", value: "A" },
       { text: "No tener métricas claras de retorno sobre la inversión", value: "B" },
-      { text: "Que la IA fragmenté la cohesión del equipo", value: "C" },
+      { text: "Que nos quedemos atrás respecto a la competencia", value: "A" },
       { text: "Los riesgos de privacidad, sesgos y errores graves", value: "D" },
+      { text: "Que la IA fragmente la cohesión del equipo", value: "C" },
     ],
   },
   {
     id: 8,
     text: "Si pudieras describir tu relación ideal con la IA, sería:",
     options: [
-      { text: "Una carrera constante por liderar la frontera tecnológica", value: "A" },
-      { text: "Una palanca estratégica que optimiza resultados clave", value: "B" },
-      { text: "Un co-piloto que potencia a las personas del equipo", value: "C" },
       { text: "Una herramienta confiable y bien gobernada", value: "D" },
+      { text: "Una carrera constante por liderar la frontera tecnológica", value: "A" },
+      { text: "Un co-piloto que potencia a las personas del equipo", value: "C" },
+      { text: "Una palanca estratégica que optimiza resultados clave", value: "B" },
     ],
   },
 ];
@@ -243,6 +251,13 @@ export default function TestPerfilIA() {
 
   const profile = result ? (PROFILES[result] ?? PROFILES["AA"]) : null;
 
+  const radarData = [
+    { dimension: "Innovación", score: answers.filter((a) => a === "A").length, fullMark: 8 },
+    { dimension: "Estrategia", score: answers.filter((a) => a === "B").length, fullMark: 8 },
+    { dimension: "Colaboración", score: answers.filter((a) => a === "C").length, fullMark: 8 },
+    { dimension: "Cautela", score: answers.filter((a) => a === "D").length, fullMark: 8 },
+  ];
+
   return (
     <section id="test-perfil" className="py-24 px-6">
       <div className="max-w-3xl mx-auto">
@@ -381,6 +396,44 @@ export default function TestPerfilIA() {
               <p className="text-slate-300 text-base max-w-xl mx-auto mb-8 leading-relaxed">
                 {profile.description}
               </p>
+
+              {/* Radar Chart */}
+              <div className="glass-light rounded-2xl p-5 mb-6">
+                <h4 className="text-sm uppercase tracking-widest text-slate-500 mb-4 text-center">Tu perfil de liderazgo IA</h4>
+                <div className="h-56">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <RadarChart data={radarData}>
+                      <PolarGrid stroke="rgba(255,255,255,0.1)" />
+                      <PolarAngleAxis
+                        dataKey="dimension"
+                        tick={{ fill: "#94a3b8", fontSize: 12 }}
+                      />
+                      <Radar
+                        name="Nivel máximo"
+                        dataKey="fullMark"
+                        stroke="rgba(139,92,246,0.2)"
+                        fill="rgba(139,92,246,0.04)"
+                        strokeDasharray="4 2"
+                      />
+                      <Radar
+                        name="Tu perfil"
+                        dataKey="score"
+                        stroke="#a78bfa"
+                        fill="rgba(167,139,250,0.2)"
+                        strokeWidth={2}
+                      />
+                      <Tooltip
+                        contentStyle={{
+                          background: "#1e293b",
+                          border: "1px solid rgba(255,255,255,0.1)",
+                          borderRadius: "12px",
+                          color: "#e2e8f0",
+                        }}
+                      />
+                    </RadarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
 
               {/* Strengths */}
               <div className="mb-6">

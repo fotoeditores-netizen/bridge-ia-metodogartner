@@ -19,6 +19,8 @@ type Module = {
   attendees?: number; // only used when type === "bootcamp"
 };
 
+const USD_TO_COP = 3_800;
+
 // Economía de escala: precio por persona según rango de asistentes
 function pricePerPerson(attendees: number): number {
   if (attendees <= 20) return 125;
@@ -31,39 +33,33 @@ function bootcampTotal(sessions: number, attendees: number): number {
   return pricePerPerson(attendees) * attendees * sessions;
 }
 
+function fmt(usd: number, currency: "USD" | "COP"): string {
+  if (currency === "COP") {
+    const cop = Math.round(usd * USD_TO_COP);
+    return `$${cop.toLocaleString("es-CO")} COP`;
+  }
+  return `$${usd.toLocaleString()} USD`;
+}
+
 const INITIAL_MODULES: Module[] = [
   {
-    id: "sensibilizacion",
-    name: "BootCamp de Sensibilización",
-    description: "Inmersión ejecutiva de alineación cultural (½ día)",
-    icon: "🌱",
+    id: "bootcamp-industria",
+    name: "Bootcamp de Industria",
+    description: "Sesiones aplicadas al sector con casos reales (full day)",
+    icon: "🏭",
     unitLabel: "sesiones",
     unitPrice: 0,
     monthlyPrice: 0,
-    quantity: 1,
+    quantity: 2,
     attendees: 10,
     enabled: true,
     type: "bootcamp",
     min: 1,
-    max: 5,
-  },
-  {
-    id: "diagnostico",
-    name: "Diagnóstico de Madurez IA",
-    description: "Evaluación profunda + reporte ejecutivo",
-    icon: "🔍",
-    unitLabel: "diagnósticos",
-    unitPrice: 3800,
-    monthlyPrice: 0,
-    quantity: 1,
-    enabled: true,
-    type: "counter",
-    min: 1,
-    max: 3,
+    max: 8,
   },
   {
     id: "formacion",
-    name: "Programa de Formación",
+    name: "Programas de Formación",
     description: "Capacitación por equipo (hasta 20 personas)",
     icon: "📚",
     unitLabel: "grupos",
@@ -74,77 +70,6 @@ const INITIAL_MODULES: Module[] = [
     type: "counter",
     min: 1,
     max: 10,
-  },
-  {
-    id: "bootcamp-industria",
-    name: "BootCamp de Industria",
-    description: "Sesiones aplicadas al sector con casos reales (full day)",
-    icon: "🏭",
-    unitLabel: "sesiones",
-    unitPrice: 0,
-    monthlyPrice: 0,
-    quantity: 2,
-    attendees: 10,
-    enabled: false,
-    type: "bootcamp",
-    min: 1,
-    max: 8,
-  },
-  {
-    id: "proyectos",
-    name: "Desarrollo de Caso Propio",
-    description: "Prototipo IA + implementación guiada",
-    icon: "🚀",
-    unitLabel: "proyectos",
-    unitPrice: 8500,
-    monthlyPrice: 0,
-    quantity: 1,
-    enabled: false,
-    type: "counter",
-    min: 1,
-    max: 5,
-  },
-  {
-    id: "acompanamiento",
-    name: "Acompañamiento Mensual",
-    description: "Mentoría continua + revisión de avances",
-    icon: "🤝",
-    unitLabel: "meses",
-    unitPrice: 0,
-    monthlyPrice: 1800,
-    quantity: 3,
-    enabled: false,
-    type: "counter",
-    min: 1,
-    max: 12,
-  },
-  {
-    id: "plataforma",
-    name: "Plataforma de Seguimiento",
-    description: "Dashboard de madurez + KPIs en tiempo real",
-    icon: "📊",
-    unitLabel: "licencia",
-    unitPrice: 1500,
-    monthlyPrice: 490,
-    quantity: 1,
-    enabled: false,
-    type: "toggle",
-    min: 1,
-    max: 1,
-  },
-  {
-    id: "gobernanza",
-    name: "Marco de Gobernanza IA",
-    description: "Políticas, ética y compliance personalizado",
-    icon: "⚖️",
-    unitLabel: "paquete",
-    unitPrice: 5200,
-    monthlyPrice: 0,
-    quantity: 1,
-    enabled: false,
-    type: "toggle",
-    min: 1,
-    max: 1,
   },
   {
     id: "comunidad",
@@ -165,6 +90,7 @@ const INITIAL_MODULES: Module[] = [
 export default function CotizadorInteractivo() {
   const [modules, setModules] = useState<Module[]>(INITIAL_MODULES);
   const [sent, setSent] = useState(false);
+  const [currency, setCurrency] = useState<"USD" | "COP">("USD");
 
   const updateQuantity = (id: string, delta: number) => {
     setModules((prev) =>
@@ -216,20 +142,21 @@ export default function CotizadorInteractivo() {
       if (m.type === "bootcamp") {
         const attendees = m.attendees ?? 10;
         const total = bootcampTotal(m.quantity, attendees);
-        return `• ${m.name} (${m.quantity} sesiones x ${attendees} personas): $${total.toLocaleString()} USD`;
+        return `• ${m.name} (${m.quantity} sesiones x ${attendees} personas): ${fmt(total, currency)}`;
       }
       const upfront = m.unitPrice * m.quantity;
       const monthly = m.monthlyPrice * m.quantity;
-      return `• ${m.name} (${m.quantity} ${m.unitLabel})${upfront > 0 ? ` — $${upfront.toLocaleString()} USD` : ""}${monthly > 0 ? ` — $${monthly.toLocaleString()}/mes` : ""}`;
+      return `• ${m.name} (${m.quantity} ${m.unitLabel})${upfront > 0 ? ` — ${fmt(upfront, currency)}` : ""}${monthly > 0 ? ` — ${fmt(monthly, currency)}/mes` : ""}`;
     });
     return [
       "Solicitud de Cotización — Método GARTNER",
+      `Moneda: ${currency}`,
       "",
       "Módulos seleccionados:",
       ...lines,
       "",
-      `Total inicial: $${totalUpfront.toLocaleString()} USD`,
-      totalMonthly > 0 ? `Recurrente mensual: $${totalMonthly.toLocaleString()} USD/mes` : "",
+      `Total inicial: ${fmt(totalUpfront, currency)}`,
+      totalMonthly > 0 ? `Recurrente mensual: ${fmt(totalMonthly, currency)}/mes` : "",
       "",
       "Me gustaría recibir una propuesta formal. ¿Podemos agendar una llamada?",
     ]
@@ -267,9 +194,38 @@ export default function CotizadorInteractivo() {
             Diseña tu{" "}
             <span className="gradient-text">Programa GARTNER</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="text-slate-400 text-lg max-w-xl mx-auto mb-6">
             Activa los módulos que necesitas y configura la cantidad. El precio se actualiza al instante.
           </p>
+
+          {/* Currency toggle */}
+          <div className="inline-flex items-center gap-1 glass rounded-2xl p-1 border border-white/10">
+            <button
+              onClick={() => setCurrency("USD")}
+              className={`px-5 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${
+                currency === "USD"
+                  ? "bg-blue-600 text-white shadow-lg"
+                  : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              🇺🇸 USD
+            </button>
+            <button
+              onClick={() => setCurrency("COP")}
+              className={`px-5 py-2 rounded-xl text-sm font-bold transition-all duration-300 ${
+                currency === "COP"
+                  ? "bg-amber-500 text-white shadow-lg"
+                  : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              🇨🇴 COP
+            </button>
+          </div>
+          {currency === "COP" && (
+            <p className="text-xs text-slate-500 mt-2">
+              TRM referencial: 1 USD = $3.800 COP
+            </p>
+          )}
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-6">
@@ -406,7 +362,7 @@ export default function CotizadorInteractivo() {
                               </span>
                               {module.enabled && (
                                 <span className="text-[10px] text-violet-400 font-bold">
-                                  ${pricePerPerson(module.attendees ?? 10)}/persona
+                                  {fmt(pricePerPerson(module.attendees ?? 10), currency)}/persona
                                 </span>
                               )}
                             </div>
@@ -471,15 +427,15 @@ export default function CotizadorInteractivo() {
                             className="flex items-center justify-between pt-2 border-t border-violet-500/10"
                           >
                             <span className="text-xs text-slate-500">
-                              {module.quantity} sesión{module.quantity !== 1 ? "es" : ""} × {module.attendees ?? 10} personas × ${pricePerPerson(module.attendees ?? 10)}/p.
+                              {module.quantity} sesión{module.quantity !== 1 ? "es" : ""} × {module.attendees ?? 10} p. × {fmt(pricePerPerson(module.attendees ?? 10), currency)}/p.
                             </span>
                             <motion.span
-                              key={bootcampTotal(module.quantity, module.attendees ?? 10)}
+                              key={`${bootcampTotal(module.quantity, module.attendees ?? 10)}-${currency}`}
                               initial={{ scale: 1.1, color: "#a78bfa" }}
                               animate={{ scale: 1, color: "#e2e8f0" }}
                               className="text-sm font-black"
                             >
-                              ${bootcampTotal(module.quantity, module.attendees ?? 10).toLocaleString()} USD
+                              {fmt(bootcampTotal(module.quantity, module.attendees ?? 10), currency)}
                             </motion.span>
                           </motion.div>
                         )}
@@ -492,12 +448,12 @@ export default function CotizadorInteractivo() {
                         <div className="flex gap-3 text-sm">
                           {module.unitPrice > 0 && (
                             <span className={module.enabled ? "text-blue-300" : "text-slate-500"}>
-                              ${module.unitPrice.toLocaleString()}/{module.unitLabel}
+                              {fmt(module.unitPrice, currency)}/{module.unitLabel}
                             </span>
                           )}
                           {module.monthlyPrice > 0 && (
                             <span className={module.enabled ? "text-amber-300" : "text-slate-500"}>
-                              ${module.monthlyPrice.toLocaleString()}/mes
+                              {fmt(module.monthlyPrice, currency)}/mes
                             </span>
                           )}
                         </div>
@@ -560,12 +516,12 @@ export default function CotizadorInteractivo() {
                       <div className="flex gap-3 text-sm">
                         {module.unitPrice > 0 && (
                           <span className={module.enabled ? "text-blue-300" : "text-slate-500"}>
-                            ${module.unitPrice.toLocaleString()} inicial
+                            {fmt(module.unitPrice, currency)} inicial
                           </span>
                         )}
                         {module.monthlyPrice > 0 && (
                           <span className={module.enabled ? "text-amber-300" : "text-slate-500"}>
-                            ${module.monthlyPrice.toLocaleString()}/mes
+                            {fmt(module.monthlyPrice, currency)}/mes
                           </span>
                         )}
                       </div>
@@ -583,7 +539,27 @@ export default function CotizadorInteractivo() {
                 className="glass rounded-3xl p-6 border border-white/10"
                 layout
               >
-                <h3 className="text-lg font-bold text-white mb-4">Resumen</h3>
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-bold text-white">Resumen</h3>
+                  <div className="flex items-center gap-0.5 glass-light rounded-xl p-0.5 border border-white/10">
+                    <button
+                      onClick={() => setCurrency("USD")}
+                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all duration-200 ${
+                        currency === "USD" ? "bg-blue-600 text-white" : "text-slate-500 hover:text-slate-300"
+                      }`}
+                    >
+                      USD
+                    </button>
+                    <button
+                      onClick={() => setCurrency("COP")}
+                      className={`px-3 py-1 rounded-lg text-xs font-bold transition-all duration-200 ${
+                        currency === "COP" ? "bg-amber-500 text-white" : "text-slate-500 hover:text-slate-300"
+                      }`}
+                    >
+                      COP
+                    </button>
+                  </div>
+                </div>
 
                 <div className="space-y-2 mb-6 min-h-[60px]">
                   <AnimatePresence>
@@ -616,18 +592,18 @@ export default function CotizadorInteractivo() {
                           <div className="text-right shrink-0">
                             {m.type === "bootcamp" ? (
                               <div className="text-violet-300 text-xs font-bold">
-                                ${bootcampTotal(m.quantity, m.attendees ?? 10).toLocaleString()}
+                                {fmt(bootcampTotal(m.quantity, m.attendees ?? 10), currency)}
                               </div>
                             ) : (
                               <>
                                 {m.unitPrice > 0 && (
                                   <div className="text-blue-300 text-xs">
-                                    ${(m.unitPrice * m.quantity).toLocaleString()}
+                                    {fmt(m.unitPrice * m.quantity, currency)}
                                   </div>
                                 )}
                                 {m.monthlyPrice > 0 && (
                                   <div className="text-amber-300 text-xs">
-                                    +${(m.monthlyPrice * m.quantity).toLocaleString()}/mo
+                                    +{fmt(m.monthlyPrice * m.quantity, currency)}/mo
                                   </div>
                                 )}
                               </>
@@ -643,26 +619,26 @@ export default function CotizadorInteractivo() {
                   <div className="flex justify-between items-baseline">
                     <span className="text-slate-400 text-sm">Total inicial</span>
                     <motion.span
-                      key={totalUpfront}
-                      initial={{ scale: 1.2, color: "#60a5fa" }}
+                      key={`${totalUpfront}-${currency}`}
+                      initial={{ scale: 1.15, color: "#60a5fa" }}
                       animate={{ scale: 1, color: "#ffffff" }}
-                      className="text-2xl font-black text-white"
+                      className={`font-black text-white ${currency === "COP" ? "text-lg" : "text-2xl"}`}
                     >
-                      ${totalUpfront.toLocaleString()}
+                      {fmt(totalUpfront, currency)}
                     </motion.span>
                   </div>
-                  <div className="text-xs text-slate-600 text-right -mt-2">USD · pago único</div>
+                  <div className="text-xs text-slate-600 text-right -mt-2">pago único</div>
 
                   {totalMonthly > 0 && (
                     <div className="flex justify-between items-baseline">
                       <span className="text-slate-400 text-sm">Recurrente mensual</span>
                       <motion.span
-                        key={totalMonthly}
-                        initial={{ scale: 1.2 }}
+                        key={`${totalMonthly}-${currency}`}
+                        initial={{ scale: 1.15 }}
                         animate={{ scale: 1 }}
-                        className="text-lg font-bold text-amber-400"
+                        className="text-base font-bold text-amber-400"
                       >
-                        +${totalMonthly.toLocaleString()}<span className="text-sm">/mes</span>
+                        +{fmt(totalMonthly, currency)}<span className="text-sm">/mes</span>
                       </motion.span>
                     </div>
                   )}

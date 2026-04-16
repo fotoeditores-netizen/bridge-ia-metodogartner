@@ -19,10 +19,10 @@ const QUESTIONS = [
     icon: "🚀",
     text: "¿Cuál describe mejor el estado de adopción de IA en tu organización?",
     options: [
-      { text: "No hemos implementado ninguna herramienta de IA formal", score: 1 },
       { text: "Algunos equipos usan herramientas aisladas de forma individual", score: 2 },
-      { text: "Hay proyectos piloto en áreas específicas con resultados mixtos", score: 3 },
       { text: "La IA está integrada en procesos core y genera valor medible", score: 4 },
+      { text: "No hemos implementado ninguna herramienta de IA formal", score: 1 },
+      { text: "Hay proyectos piloto en áreas específicas con resultados mixtos", score: 3 },
     ],
   },
   {
@@ -30,10 +30,10 @@ const QUESTIONS = [
     icon: "👑",
     text: "¿Cómo está involucrado el liderazgo de tu empresa en la estrategia de IA?",
     options: [
-      { text: "La dirección no tiene una posición clara sobre IA", score: 1 },
-      { text: "Hay interés pero sin un ejecutivo responsable (Chief AI Officer o similar)", score: 2 },
       { text: "El liderazgo tiene una visión pero la ejecución es inconsistente", score: 3 },
+      { text: "La dirección no tiene una posición clara sobre IA", score: 1 },
       { text: "Hay un roadmap ejecutivo de IA con sponsors de nivel C activos", score: 4 },
+      { text: "Hay interés pero sin un ejecutivo responsable (Chief AI Officer o similar)", score: 2 },
     ],
   },
   {
@@ -42,8 +42,8 @@ const QUESTIONS = [
     text: "¿Qué políticas de uso responsable de IA tiene tu organización?",
     options: [
       { text: "No existen políticas formales de uso de IA", score: 1 },
-      { text: "Hay lineamientos informales pero no están documentados", score: 2 },
       { text: "Existen políticas básicas de uso de datos e IA documentadas", score: 3 },
+      { text: "Hay lineamientos informales pero no están documentados", score: 2 },
       { text: "Marco completo de gobernanza IA: ética, privacidad, auditoría y cumplimiento", score: 4 },
     ],
   },
@@ -52,10 +52,10 @@ const QUESTIONS = [
     icon: "🎓",
     text: "¿Cómo se capacita a los colaboradores en competencias de IA?",
     options: [
-      { text: "No hay programas de formación en IA", score: 1 },
+      { text: "Programa integral de alfabetización IA para todos los niveles de la organización", score: 4 },
       { text: "Acceso esporádico a recursos externos (cursos libres, tutoriales)", score: 2 },
       { text: "Programas de capacitación estructurados para equipos técnicos", score: 3 },
-      { text: "Programa integral de alfabetización IA para todos los niveles de la organización", score: 4 },
+      { text: "No hay programas de formación en IA", score: 1 },
     ],
   },
   {
@@ -63,10 +63,10 @@ const QUESTIONS = [
     icon: "🔗",
     text: "¿Cómo está integrada la IA con los sistemas y procesos existentes?",
     options: [
-      { text: "La IA opera de forma completamente aislada de los sistemas actuales", score: 1 },
       { text: "Integraciones manuales o semi-manuales en procesos no críticos", score: 2 },
-      { text: "Integración técnica en algunos sistemas core con supervisión humana", score: 3 },
       { text: "IA nativa integrada en flujos de trabajo, APIs y decisiones automatizadas", score: 4 },
+      { text: "La IA opera de forma completamente aislada de los sistemas actuales", score: 1 },
+      { text: "Integración técnica en algunos sistemas core con supervisión humana", score: 3 },
     ],
   },
   {
@@ -74,10 +74,10 @@ const QUESTIONS = [
     icon: "📊",
     text: "¿Cómo mide tu empresa el impacto y ROI de sus iniciativas de IA?",
     options: [
-      { text: "No medimos el impacto de IA formalmente", score: 1 },
-      { text: "Seguimiento informal de resultados sin KPIs definidos", score: 2 },
       { text: "KPIs de IA establecidos pero revisados esporádicamente", score: 3 },
+      { text: "No medimos el impacto de IA formalmente", score: 1 },
       { text: "Dashboard de IA con métricas en tiempo real alineadas al negocio", score: 4 },
+      { text: "Seguimiento informal de resultados sin KPIs definidos", score: 2 },
     ],
   },
 ];
@@ -97,7 +97,7 @@ const DEPTH_QUESTIONS = [
   },
   {
     text: "¿Cuál sería tu inversión anual disponible para IA?",
-    options: ["Menos de $50K", "$50K - $200K", "$200K - $1M", "Más de $1M"],
+    options: ["Menos de 20K", "De 20K a 100K", "De 100K a 500K", "Más de 500K"],
   },
 ];
 

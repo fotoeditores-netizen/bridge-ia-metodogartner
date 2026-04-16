@@ -52,7 +52,7 @@ export default function Footer() {
 
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-600 text-xs">
-            © 2025 Método GARTNER. Todos los derechos reservados.
+            © 2026 Método GARTNER. Todos los derechos reservados.
           </p>
           <p className="text-slate-700 text-xs">
             Construido con propósito · Impulsado por IA · Transformado por personas
