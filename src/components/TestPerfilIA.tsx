@@ -400,13 +400,13 @@ export default function TestPerfilIA() {
               {/* Radar Chart */}
               <div className="glass-light rounded-2xl p-5 mb-6">
                 <h4 className="text-sm uppercase tracking-widest text-slate-500 mb-4 text-center">Tu perfil de liderazgo IA</h4>
-                <div className="h-56">
+                <div className="h-80">
                   <ResponsiveContainer width="100%" height="100%">
-                    <RadarChart data={radarData}>
+                    <RadarChart data={radarData} outerRadius="60%" margin={{ top: 20, right: 40, bottom: 20, left: 40 }}>
                       <PolarGrid stroke="rgba(255,255,255,0.1)" />
                       <PolarAngleAxis
                         dataKey="dimension"
-                        tick={{ fill: "#94a3b8", fontSize: 12 }}
+                        tick={{ fill: "#94a3b8", fontSize: 13 }}
                       />
                       <Radar
                         name="Nivel máximo"
