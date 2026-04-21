@@ -103,6 +103,14 @@ export default function HeroSection() {
             Descubre tu Perfil IA
             <span className="ml-2 group-hover:translate-x-1 inline-block transition-transform">→</span>
           </button>
+          <a
+            href="/bridge-ia"
+            className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl text-white font-bold text-lg hover:from-amber-400 hover:to-orange-500 transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center gap-2"
+          >
+            <span>🎮</span>
+            Jugar BRIDGE·IA
+            <span className="group-hover:translate-x-1 inline-block transition-transform">→</span>
+          </a>
           <button
             onClick={scrollToMethodology}
             className="px-8 py-4 glass rounded-2xl text-slate-200 font-semibold text-lg hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20"
