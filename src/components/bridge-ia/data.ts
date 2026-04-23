@@ -1,4 +1,4 @@
-// BRIDGE·IA — Simulador del Método GARTNER
+// Cracks de IA — Simulador del Método GARTNER
 // Datos completos del juego: 5 módulos, 38 preguntas, 615 puntos máximos
 
 export interface GameQuestion {
@@ -134,18 +134,18 @@ export const module1: GameModule = {
     },
     {
       id: "m1-07",
-      prompt: "Embeddings",
+      prompt: "Prompt Engineering",
       options: [
-        "Técnica de compresión de imágenes para optimizar el almacenamiento en plataformas de contenido digital.",
-        "Representaciones matemáticas de texto en forma de vectores numéricos que capturan el significado semántico de las palabras y frases.",
-        "Proceso de integración de módulos externos en aplicaciones de gestión empresarial (ERP).",
-        "Formato de archivo para almacenar presentaciones ejecutivas con elementos multimedia interactivos."
+        "Rama de la ingeniería de software orientada al desarrollo y mantenimiento de sistemas de procesamiento de lenguaje natural en arquitecturas de microservicios.",
+        "Disciplina que estudia el diseño, optimización y estructuración de instrucciones en lenguaje natural para obtener respuestas precisas, útiles y consistentes de los modelos de IA.",
+        "Proceso de configuración técnica de parámetros en los servidores que alojan modelos de inteligencia artificial para optimizar su rendimiento computacional.",
+        "Metodología de gestión de proyectos tecnológicos basada en ciclos iterativos cortos y retroalimentación continua de los usuarios finales del sistema."
       ],
       correctIndex: 1,
       points: 10,
-      feedback: "✅ ¡Exacto! Los embeddings permiten búsqueda por SIGNIFICADO, no solo por palabras exactas. Son la base técnica del RAG y los sistemas de búsqueda inteligente en documentos corporativos.",
-      bestPractice: "🏆 Mejor práctica: Si construyes un sistema de búsqueda sobre documentos internos, los embeddings te permiten encontrar información relevante aunque el usuario use términos diferentes a los del documento.",
-      tag: "Técnico"
+      feedback: "✅ ¡Exacto! El Prompt Engineering es la disciplina de diseñar instrucciones efectivas para la IA. No es programación tradicional —es la habilidad de comunicarse con precisión con los modelos de lenguaje para obtener outputs de alta calidad.",
+      bestPractice: "🏆 Mejor práctica: El Prompt Engineering es la habilidad más rentable que puede desarrollar un consultor hoy. La diferencia entre un prompt promedio y uno excelente puede significar 2-3 iteraciones menos por entregable —y eso se acumula en cientos de horas al año.",
+      tag: "Técnicas"
     },
     {
       id: "m1-08",
@@ -224,18 +224,18 @@ export const module1: GameModule = {
     },
     {
       id: "m1-13",
-      prompt: "Chain-of-Thought (Cadena de Pensamiento)",
+      prompt: "Gobernanza de IA",
       options: [
-        "Red de colaboración entre consultores senior para compartir mejores prácticas y casos de estudio.",
-        "Sistema de registro de transacciones en cadena para auditorías financieras corporativas.",
-        "Técnica de prompting que instruye al modelo a razonar paso a paso antes de dar una respuesta final, mejorando la precisión en tareas complejas.",
-        "Protocolo de comunicación encadenada entre múltiples sistemas de inteligencia artificial distribuidos."
+        "Sistema de administración de licencias de software de inteligencia artificial que regula el acceso y uso de herramientas por parte de empleados en organizaciones empresariales.",
+        "Proceso de auditoría técnica de los modelos de IA para verificar la precisión de sus respuestas antes de implementarlos en entornos de producción empresarial.",
+        "Marco de políticas, procesos y responsabilidades que una organización establece para el uso responsable, seguro y alineado con sus valores de los sistemas de inteligencia artificial.",
+        "Protocolo de comunicación entre diferentes sistemas de inteligencia artificial para garantizar la interoperabilidad y el intercambio seguro de datos entre plataformas."
       ],
       correctIndex: 2,
       points: 10,
-      feedback: "✅ ¡Exacto! El Chain-of-Thought activa patrones de razonamiento más rigurosos. Al pedir al modelo que 'piense en voz alta', mejora significativamente la precisión en análisis complejos.",
-      bestPractice: "🏆 Mejor práctica: Añade 'Razona paso a paso antes de responder' o 'Muestra tu proceso de análisis' a prompts de evaluación, diagnóstico o recomendaciones estratégicas complejas.",
-      tag: "Técnicas"
+      feedback: "✅ ¡Correcto! La Gobernanza de IA es el conjunto de reglas, procesos y responsabilidades que una organización define para usar la IA de forma responsable. Incluye quién puede usar qué herramientas, qué datos pueden compartirse, cómo se revisan los outputs y quién responde por los errores.",
+      bestPractice: "🏆 Mejor práctica: Toda firma consultora necesita una política de Gobernanza de IA antes de usar estas herramientas con clientes. Define: qué herramientas están aprobadas, qué datos del cliente pueden ingresarse, cómo se validan los outputs y cómo se comunica el uso de IA. Sin gobernanza, el riesgo reputacional y legal es alto.",
+      tag: "Gobernanza"
     }
   ]
 };
@@ -516,10 +516,10 @@ export const module4: GameModule = {
       prompt: "Componente de CONTEXTO: ¿Cuál versión proporciona el mejor contexto para el caso de georreferenciación retail?",
       subtitle: "Caso: Empresa retail con 20 tiendas en Colombia quiere expandirse a ciudades intermedias en 2025.",
       options: [
-        "«Dame información sobre dónde abrir tiendas en Colombia.»",
+        "«Dame información actualizada sobre el mercado retail en Colombia y dime cuáles son las ciudades con mayor potencial para abrir nuevas tiendas. Incluye los principales factores que debo considerar para tomar la mejor decisión de expansión del negocio.»",
         "«Actúa como experto en geomarketing y expansión retail en LATAM. La empresa tiene 20 tiendas en ciudades principales (Bogotá, Medellín, Cali, Barranquilla), factura $45M USD anuales, su ticket promedio es $85 USD y su cliente objetivo es NSE 3-4 (30-55 años). El objetivo es expandirse a 5 ciudades intermedias en 2025 con inversión de $2M por tienda.»",
-        "«Necesito análisis de mercado para el sector retail colombiano.»",
-        "«Analiza el mercado retail en Colombia y dime dónde hay oportunidades.»"
+        "«Necesito que realices un análisis completo del sector retail colombiano. Incluye las tendencias del mercado en los últimos años, el comportamiento del consumidor en diferentes regiones y las oportunidades de expansión más relevantes para una empresa establecida que busca crecer a nuevas ciudades.»",
+        "«Analiza el mercado retail colombiano usando todas las fuentes de información disponibles. Identifica las ciudades con mayor potencial de crecimiento para nuevas tiendas, evalúa la competencia en cada mercado y proporciona una recomendación completa sobre dónde abrir las nuevas ubicaciones con la mayor probabilidad de éxito.»"
       ],
       correctIndex: 1,
       points: 20,
@@ -532,10 +532,10 @@ export const module4: GameModule = {
       prompt: "Componente de VARIABLES Y FUENTES: ¿Qué versión especifica mejor las variables y fuentes de datos para el análisis de georreferenciación?",
       subtitle: "Caso: Selección de ubicaciones óptimas para retail en ciudades intermedias de Colombia.",
       options: [
-        "«Usa datos de ventas e información general del mercado colombiano.»",
-        "«Considera datos disponibles en internet sobre ciudades colombianas.»",
+        "«Para el análisis, usa los datos de ventas históricos de la empresa y la información general disponible sobre el mercado colombiano. Considera los indicadores económicos más relevantes del sector retail y las tendencias de consumo en Colombia que puedan influir en la selección de ubicaciones para nuevas tiendas.»",
+        "«Considera toda la información disponible en internet sobre las principales ciudades colombianas: población, desarrollo económico, presencia de centros comerciales y dinámica del comercio en cada zona. Con esta base de datos pública podrás identificar qué ciudades tienen las mejores condiciones para la expansión del negocio retail.»",
         "«Integra estas variables ponderadas: población total y crecimiento (15%), NSE 3-4 como % de hogares (25%), flujo peatonal por zona (20%), distancia al competidor más cercano (20%), acceso a transporte masivo (10%), costo promedio de arriendo comercial m² (10%). Fuentes: DANE 2023, Nielsen Retail, datos propios de la empresa.»",
-        "«Usa Google Maps y estadísticas del DANE para el análisis.»"
+        "«Usa Google Maps para analizar la distribución geográfica del comercio en cada ciudad candidata y combínalo con las estadísticas del DANE sobre población y nivel socioeconómico. Esta combinación de herramientas de fácil acceso permite hacer un análisis rápido y suficientemente preciso para tomar la decisión de expansión.»"
       ],
       correctIndex: 2,
       points: 20,
@@ -548,10 +548,10 @@ export const module4: GameModule = {
       prompt: "Componente de ENTREGABLE FINAL: ¿Qué versión define mejor el entregable esperado para el análisis de georreferenciación?",
       subtitle: "Caso: El CEO necesita presentar la decisión de expansión a la junta directiva la próxima semana.",
       options: [
-        "«Muéstrame los resultados del análisis en un formato claro.»",
-        "«Dame las mejores ciudades con su justificación.»",
+        "«Una vez finalizado el análisis, muéstrame los resultados en un formato claro y fácil de entender. Incluye las principales conclusiones y las ciudades recomendadas con su respectiva justificación, organizado de manera que pueda presentarse directamente a los tomadores de decisión de la empresa.»",
+        "«Dame un listado de las mejores ciudades para abrir nuevas tiendas con su justificación respectiva. Para cada ciudad recomendada, explica brevemente por qué representa una buena oportunidad de expansión y qué factores la hacen atractiva para el perfil de clientes y el modelo de negocio de la empresa.»",
         "«Genera: 1) Ranking de top-10 ciudades con score ponderado 0-100, 2) Ficha técnica por cada ciudad Top-5: población, NSE, competidores, accesibilidad y riesgo, 3) Mapa de calor de oportunidades por región, 4) Proyección de ventas año 1-3 por ubicación, 5) Matriz de riesgos (político, regulatorio, logístico) por ciudad. Formato: informe ejecutivo de 8 páginas + tabla de decisión para junta directiva.»",
-        "«Haz un reporte con las recomendaciones principales.»"
+        "«Prepara un reporte ejecutivo con las principales recomendaciones del análisis de georreferenciación. El documento debe incluir las ciudades seleccionadas, los argumentos que sustentan cada recomendación y un resumen ejecutivo que permita al equipo directivo revisar y validar la decisión de expansión en la próxima reunión.»"
       ],
       correctIndex: 2,
       points: 20,
@@ -564,9 +564,9 @@ export const module4: GameModule = {
       prompt: "Componente de ROL Y TONO: ¿Qué definición de rol es más efectiva para el análisis de expansión retail?",
       subtitle: "Caso: El análisis será presentado a inversores internacionales con experiencia en retail LATAM.",
       options: [
-        "«Eres un asistente de inteligencia artificial general.»",
-        "«Actúa como consultor.»",
-        "«Eres experto en análisis de mercados.»",
+        "«Eres un asistente de inteligencia artificial con acceso a información amplia sobre múltiples temas, incluyendo negocios, economía y análisis de mercados. Tienes capacidad para procesar grandes volúmenes de información y generar análisis objetivos basados en los datos que se te proporcionen para este proyecto.»",
+        "«Actúa como un consultor de negocios con experiencia en el sector retail y conocimiento del mercado latinoamericano. Analiza la situación de expansión de la empresa con criterio profesional, considera los factores más relevantes del mercado colombiano y proporciona recomendaciones basadas en las mejores prácticas del sector.»",
+        "«Eres un experto en análisis de mercados con conocimiento en investigación de consumidores, evaluación de competencia y dinámica comercial en distintas regiones. Aplica tu conocimiento para evaluar el potencial de expansión retail en Colombia, considerando los factores de mercado más relevantes para el sector.»",
         "«Eres un consultor senior de geomarketing especializado en expansión de retail en mercados emergentes de América Latina, con experiencia en análisis de localización para marcas con presencia en 10+ países. Tu análisis debe tener el rigor metodológico de un informe McKinsey y ser comprensible para una audiencia de inversores internacionales.»"
       ],
       correctIndex: 3,
@@ -580,10 +580,10 @@ export const module4: GameModule = {
       prompt: "PROMPT INTEGRADO: ¿Cuál de estos prompts completos es el más efectivo para el caso de georreferenciación retail?",
       subtitle: "Evalúa el prompt completo (Rol + Contexto + Variables + Instrucciones + Entregable).",
       options: [
-        "«Analiza dónde debería expandirse una empresa de retail colombiana con 20 tiendas y recomienda 5 ciudades.»",
-        "«Eres experto en geomarketing. Una empresa retail con 20 tiendas quiere expandirse. Usa datos del DANE y analiza factores como población, NSE y competencia. Dame un ranking de ciudades con justificación.»",
+        "«Analiza el mercado retail colombiano y recomienda las 5 mejores ciudades para que una empresa con 20 tiendas en ciudades principales pueda expandirse. Considera los factores económicos y demográficos más importantes, y proporciona una justificación sólida para cada ciudad recomendada que permita tomar la decisión de expansión con confianza.»",
+        "«Eres experto en geomarketing. Una empresa retail con 20 tiendas quiere expandirse a ciudades intermedias en Colombia. Usa datos del DANE y analiza los factores más relevantes como población, nivel socioeconómico y presencia de competidores. Con base en este análisis, genera un ranking de las mejores ciudades con la justificación de cada recomendación.»",
         "«Eres un consultor de geomarketing senior con experiencia en retail LATAM [Rol]. La empresa tiene 20 tiendas en ciudades principales, factura $45M, ticket promedio $85, cliente objetivo NSE 3-4 [Contexto]. Analiza estas variables ponderadas: NSE (25%), flujo peatonal (20%), distancia competidor (20%), población (15%), transporte (10%), arriendo (10%). Fuentes: DANE, Nielsen [Variables]. Genera: ranking Top-10 ciudades con score, fichas técnicas Top-5, proyección de ventas 3 años, y matriz de riesgos. Formato: informe ejecutivo para junta directiva [Entregable].»",
-        "«Necesito un análisis de georreferenciación completo para decidir dónde abrir nuevas tiendas. Incluye todos los factores relevantes y dame una recomendación final con justificación detallada.»"
+        "«Necesito un análisis completo de georreferenciación para identificar las mejores ubicaciones donde abrir nuevas tiendas en Colombia. Por favor incluye todos los factores que sean relevantes para este tipo de decisión, evalúa las principales alternativas disponibles y proporciona una recomendación final con una justificación detallada que respalde la decisión de expansión.»"
       ],
       correctIndex: 2,
       points: 20,
@@ -600,8 +600,8 @@ export const module4: GameModule = {
 export const module5: GameModule = {
   id: "module5",
   title: "Decisión Estratégica",
-  subtitle: "Justifica el ROI de la IA en consultoría",
-  description: "Cuatro casos de negocio reales. Elige la justificación estratégica más sólida para adoptar IA en cada escenario. Piensa como un director de consultoría.",
+  subtitle: "El consultor en acción — situaciones reales",
+  description: "Cuatro situaciones reales que enfrentan los consultores con IA. Elige la decisión más inteligente y profesional en cada escenario.",
   color: "amber",
   icon: "⚡",
   gartnerLetter: "E",
@@ -610,63 +610,63 @@ export const module5: GameModule = {
   questions: [
     {
       id: "m5-01",
-      prompt: "PRODUCTIVIDAD: Tu consultora tarda 40 horas promedio en generar una propuesta comercial completa. Con IA, este tiempo se reduciría a 8 horas. El comité de inversión te pide una justificación financiera clara.",
+      prompt: "VERIFICACIÓN DE CIFRAS: La IA te entregó un informe con 47 datos cuantitativos. Tienes 2 horas antes de la presentación con el cliente. ¿Cuál es la estrategia de verificación más inteligente?",
       options: [
-        "«La IA es una tecnología disruptiva que debemos adoptar para no quedar obsoletos frente a la competencia.»",
-        "«Todos nuestros competidores ya están usando IA, por lo que no tenemos opción si queremos mantenernos relevantes.»",
-        "«Reducir de 40h a 8h por propuesta (80% menos) libera 32h/propuesta por consultor. A $150/hora, eso es $4,800 en capacidad recuperada por propuesta. Con 15 propuestas al mes, la firma recupera $72,000 mensuales en capacidad — equivalente a contratar 3 consultores adicionales sin el costo fijo de $210,000 anuales.»",
-        "«La tecnología siempre mejora la productividad y reduce errores, lo que se traduce en mejor calidad para los clientes.»"
-      ],
-      correctIndex: 2,
-      points: 50,
-      feedback: "✅ ¡Correcto! La justificación C es superior porque cuantifica el impacto en términos financieros concretos: horas ahorradas → valor por hora → dinero recuperado → equivalencia en recursos humanos. Esto es lo que convence a un comité de inversión.",
-      bestPractice: "🏆 Mejor práctica: Siempre cuantifica el ROI de la IA. La fórmula: (Tiempo ahorrado × Costo/hora × Volumen mensual) = Capacidad recuperada. Compara con el costo de la herramienta. Los números concretos eliminan el debate filosófico sobre 'si la IA vale'.",
-      tag: "Productividad"
-    },
-    {
-      id: "m5-02",
-      prompt: "VENTAJA COMPETITIVA: Un nuevo competidor lanza análisis predictivos con IA a precios 30% más bajos. Tu firma sigue usando métodos analíticos tradicionales y el cliente comienza a cuestionar el valor de tus tarifas.",
-      options: [
-        "«Tenemos 20 años de experiencia y relaciones con los clientes que ninguna herramienta de IA puede reemplazar.»",
-        "«Debemos reducir nuestros precios para mantenernos competitivos en el mercado.»",
-        "«Vamos a especializarnos en los nichos donde la IA todavía no puede competir con el juicio humano.»",
-        "«Integrando IA en nuestros análisis, entregamos insights en 72 horas vs. 3 semanas del mercado tradicional, con modelos predictivos calibrados para cada sector. Esto convierte velocidad + especialización en nuestra ventaja diferencial frente a competidores genéricos que solo usan IA como commodity.»"
-      ],
-      correctIndex: 3,
-      points: 50,
-      feedback: "✅ ¡Exacto! La respuesta D es la única estrategia ofensiva. Combina la velocidad de la IA con la especialización humana para crear una propuesta de valor que el competidor low-cost no puede replicar. Las otras respuestas son posiciones defensivas o de rendición.",
-      bestPractice: "🏆 Mejor práctica: La IA como ventaja competitiva no es solo sobre velocidad —es sobre la combinación única de herramienta + conocimiento experto + contexto del cliente. Eso es imposible de commoditizar.",
-      tag: "Ventaja Competitiva"
-    },
-    {
-      id: "m5-03",
-      prompt: "TOMA DE DECISIONES: El comité directivo debe recomendar entre 3 propuestas estratégicas para un cliente. Tienen 90 minutos, datos incompletos y presión política entre los directivos involucrados.",
-      options: [
-        "«Presentar los datos disponibles y hacer una recomendación basada en la experiencia colectiva del equipo.»",
-        "«Usar IA para: 1) sintetizar los datos disponibles en 10 minutos, 2) modelar 3 escenarios con sus probabilidades e impactos, 3) identificar los 5 datos faltantes más críticos y cómo obtenerlos en 20 minutos, 4) generar visualizaciones comparativas y 5) proponer criterios objetivos de evaluación para despolitizar la discusión. Decisión informada en 60 minutos, con 30 min libres para alinear.»",
-        "«Posponer la decisión hasta tener datos completos y un análisis formal.»",
-        "«Contratar un consultor externo especializado para hacer un diagnóstico independiente de las 3 propuestas.»"
+        "Verificar las 47 cifras una por una usando fuentes primarias: esta es una responsabilidad profesional no negociable. Presentar datos sin verificar podría comprometer la credibilidad de la firma y exponer al cliente a decisiones basadas en información incorrecta. El tiempo adicional invertido es una inversión en calidad que ningún cliente cuestiona.",
+        "Identificar y verificar únicamente las 5 a 7 cifras que sostienen las conclusiones principales del análisis. Las cifras secundarias o de contexto pueden marcarse como 'estimaciones de referencia'. Esto concentra el esfuerzo donde mayor impacto tiene y permite entregar con integridad profesional en el tiempo disponible.",
+        "Presentar el informe incluyendo una nota al pie que indique que los datos fueron generados por IA y están sujetos a verificación posterior. Esto gestiona la expectativa del cliente de forma transparente, no compromete el cronograma del proyecto y traslada la responsabilidad de validación al propio cliente si decide actuar con ellos.",
+        "Solicitar a la misma IA que auto-verifique sus cifras consultando sus propias fuentes de entrenamiento. Si el modelo confirma los datos con alta confianza, el riesgo de error es bajo y la presentación puede proceder sin demoras. Es eficiente y aprovecha la capacidad de autocorrección de los modelos actuales."
       ],
       correctIndex: 1,
       points: 50,
-      feedback: "✅ ¡Correcto! La opción B es la única que aprovecha la restricción de tiempo como una oportunidad. La IA no solo acelera el análisis —también introduce criterios objetivos que reducen la influencia política en la decisión, que es el verdadero obstáculo mencionado en el escenario.",
-      bestPractice: "🏆 Mejor práctica: La IA en decisiones complejas tiene un segundo beneficio oculto: despolitizar. Cuando los criterios de evaluación los propone un análisis estructurado (no un directivo con agenda), la discusión se vuelve más objetiva.",
-      tag: "Toma de Decisiones"
+      feedback: "✅ ¡Correcto! Verificar todas las 47 cifras es impracticable en 2 horas (opción A). Pedir a la IA que se auto-verifique es inútil —no tiene acceso a fuentes externas en tiempo real y no detecta sus propias alucinaciones (opción D). La nota al pie traslada el riesgo al cliente sin resolver el problema real (opción C). La estrategia correcta: verificar las cifras clave que sustentan tus conclusiones, priorizando por impacto en la decisión.",
+      bestPractice: "🏆 Mejor práctica: Aplica el principio 80/20 a la verificación. El 20% de los datos —los que sostienen tus conclusiones principales— representa el 80% del riesgo. Verifica esos primero, siempre con fuentes primarias. Las cifras de contexto pueden indicarse como 'estimaciones de referencia' sin comprometer la integridad del análisis.",
+      tag: "Verificación"
+    },
+    {
+      id: "m5-02",
+      prompt: "TRANSPARENCIA PROFESIONAL: En una reunión de avance, el Director General de tu cliente te pregunta directamente: '¿Están usando inteligencia artificial en este proyecto?' ¿Cómo respondes?",
+      options: [
+        "Responder que el equipo utiliza 'herramientas tecnológicas avanzadas de análisis de datos' que optimizan los tiempos de entrega. Esta formulación es técnicamente precisa, evita el debate sobre IA que podría generar desconfianza en el cliente, y permite continuar el proyecto sin comprometer la dinámica de la relación comercial con el cliente.",
+        "Confirmar que sí se usa IA, pero aclarar que solo para tareas menores como formateo y búsqueda de información básica. De esta manera se gestiona la percepción sin revelar el alcance completo del uso, protegiendo el valor percibido de la consultoría y evitando preguntas incómodas sobre la tarifa cobrada versus el tiempo real invertido.",
+        "Responder: 'Desde luego. Somos expertos en el uso responsable de IA y la integramos en nuestra metodología de trabajo. Esto nos permite ir más rápido y más profundo en el análisis, pero cada insight es validado y respaldado por nuestro criterio profesional y una metodología con gobernanza clara.'",
+        "Explicar que por políticas de confidencialidad de la firma no se puede revelar las herramientas específicas que se usan en los proyectos, pero que los estándares de calidad y los entregables acordados están plenamente garantizados según los términos del contrato firmado con el cliente."
+      ],
+      correctIndex: 2,
+      points: 50,
+      feedback: "✅ ¡Correcto! La opción C es la única que responde con transparencia total, convierte el uso de IA en una fortaleza competitiva y mantiene la confianza del cliente. Las opciones A, B y D son evasivas o directamente engañosas —lo que hoy se llama 'AI-washing'. La transparencia con gobernanza no debilita tu posición como consultor; la fortalece y diferencia.",
+      bestPractice: "🏆 Mejor práctica: La transparencia sobre el uso de IA es una ventaja competitiva, no una vulnerabilidad. Prepara una 'declaración de metodología IA' para tu firma: qué herramientas usan, cómo validan los outputs, qué garantías ofrecen. Los clientes sofisticados valoran el rigor metodológico y la honestidad; el secretismo genera desconfianza cuando eventualmente se descubre.",
+      tag: "Ética Profesional"
+    },
+    {
+      id: "m5-03",
+      prompt: "IA COMO ESPEJO ESTRATÉGICO: Llevas 3 horas trabajando en una propuesta de estrategia para un cliente complejo y estás bloqueado: tienes los datos pero no logras armar un argumento coherente. ¿Cuál es el uso más inteligente de la IA en este momento?",
+      options: [
+        "Pedirle a la IA que genere la estrategia completa a partir de los datos disponibles. Así se rompe el bloqueo de inmediato: el modelo puede procesar toda la información y proponer una estructura lógica que el consultor luego puede refinar, ajustar al contexto del cliente y presentar con el juicio profesional como valor agregado.",
+        "Pedirle a la IA que te formule las 5 preguntas más críticas que un cliente experto y exigente te haría sobre la propuesta que estás construyendo. Esto activa el pensamiento crítico, identifica los huecos en tu argumento y te obliga a fortalecer la lógica antes de seguir construyendo la propuesta.",
+        "Buscar en bases de datos de consultoría estrategias similares aplicadas a clientes con características parecidas. Usar estos casos como referencia y adaptarlos con los datos específicos del cliente actual es una práctica estándar en el sector que acelera la producción sin comprometer la calidad del entregable.",
+        "Pausar el trabajo individual y convocar una sesión de revisión con el equipo de proyecto. El bloqueo puede ser síntoma de que el enfoque analítico no es el correcto, y la perspectiva colectiva de otros consultores puede revelar ángulos que no se están considerando desde la visión individual del analista principal."
+      ],
+      correctIndex: 1,
+      points: 50,
+      feedback: "✅ ¡Correcto! La opción B usa la IA como 'espejo crítico' en lugar de como ejecutor. La pregunta clave —¿qué cuestionaría un cliente experto?— revela rápidamente los huecos en el razonamiento que el bloqueo estaba ocultando. La opción A genera dependencia intelectual y puede desprofesionalizar el entregable. Las opciones C y D pueden complementar, pero no resuelven el bloqueo estratégico central.",
+      bestPractice: "🏆 Mejor práctica: Usa la IA como socio crítico, no como co-autor. 'Hazme las 5 preguntas más duras que un cliente exigente haría sobre esta propuesta' es uno de los prompts más poderosos en consultoría estratégica. Te da perspectiva externa instantánea y sin el sesgo de confirmación que acumulas tras horas trabajando en el mismo problema.",
+      tag: "IA como Espejo"
     },
     {
       id: "m5-04",
-      prompt: "ESCALABILIDAD: Tu firma tiene 12 consultores y recibe el doble de solicitudes de las que puede atender. Contratar es lento (6 meses de onboarding) y costoso ($80K+ anuales por consultor). Los clientes esperan respuesta en 24h.",
+      prompt: "EXPERTO GUÍA, IA POTENCIA: Tienes un proyecto de análisis sectorial complejo que requiere la participación de un especialista con 20 años de experiencia en el sector. ¿Cuál es la mejor manera de integrar la IA en este contexto?",
       options: [
-        "«Rechazar selectivamente los proyectos menos rentables para mantener la calidad de entrega.»",
-        "«Subcontratar el exceso de trabajo a una red de freelancers verificados con experiencia en nuestros sectores.»",
-        "«Aumentar los precios para reducir orgánicamente la demanda al nivel que podemos manejar.»",
-        "«Implementar IA como 'capa de capacidad aumentada': cada consultor usa IA para manejar la fase de diagnóstico inicial, propuestas estándar y análisis preliminares. Esto permite que cada consultor gestione 2.5x más proyectos sin pérdida de calidad, escalando la firma de 12 a ~30 proyectos simultáneos con el mismo equipo. ROI: $0 en contratación vs. $960K en 12 consultores adicionales.»"
+        "Usar principalmente la IA para hacer el análisis más rápido y reducir el tiempo del especialista al mínimo indispensable. La IA puede acceder a más datos en menos tiempo que el experto, lo que maximiza el ROI del proyecto, reduce el costo por hora de consultoría y permite ofrecer tarifas más competitivas al cliente sin comprometer la profundidad del análisis.",
+        "El experto lidera y estructura el análisis con su criterio y experiencia acumulada; la IA se usa para acelerar la recolección de información, sintetizar grandes volúmenes de datos y generar comparativos sectoriales. El juicio experto define qué es relevante e interpreta las conclusiones; la IA amplifica la capacidad de procesamiento.",
+        "Que el especialista realice el análisis completo sin integrar IA, para preservar la integridad metodológica y el valor diferencial del conocimiento experto. La IA puede introducir ruido, sesgos y posibles alucinaciones que comprometerían la solidez de las conclusiones en un proyecto que exige el más alto nivel de rigor técnico.",
+        "Dividir el trabajo en dos flujos paralelos independientes: el especialista hace su análisis usando su metodología tradicional, mientras la IA realiza un análisis separado con los mismos datos disponibles. Al final se comparan los outputs y se consolida el informe final con las coincidencias más relevantes y las diferencias más significativas entre ambos enfoques."
       ],
-      correctIndex: 3,
+      correctIndex: 1,
       points: 50,
-      feedback: "✅ ¡Exacto! La opción D es la única estrategia de escalabilidad real. Las otras 3 son estrategias de gestión de capacidad limitada (rechazar, subcontratar, filtrar por precio). La IA como multiplicador de capacidad es el pilar de la escalabilidad moderna en servicios profesionales.",
-      bestPractice: "🏆 Mejor práctica: El marco de 'consultor aumentado por IA' redefine la unidad de producción. En lugar de medir capacidad en número de consultores, mídela en 'consultores × multiplicador de IA'. El multiplicador típico es 2-3x en tareas de análisis y redacción.",
-      tag: "Escalabilidad"
+      feedback: "✅ ¡Correcto! La opción B es el modelo de 'consultor aumentado': el experto define el qué y el por qué; la IA acelera el cómo. Minimizar al experto (opción A) es un error crítico —su juicio es precisamente lo que da valor e irreplicabilidad al análisis. Excluir la IA (opción C) desperdicia capacidad disponible. Dos análisis paralelos (opción D) duplica el trabajo sin crear verdadera sinergia entre las partes.",
+      bestPractice: "🏆 Mejor práctica: El modelo correcto es Experto + IA = 1+1 > 2. El experto define el marco analítico, las variables críticas y la interpretación final de los resultados. La IA maneja volumen, velocidad y comparativos exhaustivos. Este modelo entrega el rigor y credibilidad del especialista con la escala y velocidad de la IA —una combinación que ninguno puede lograr solo.",
+      tag: "Colaboración Experto-IA"
     }
   ]
 };

@@ -72,7 +72,7 @@ function ScoreBar({ scores, moduleIndex }: { scores: number[]; moduleIndex: numb
     <div className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/8">
       <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-4">
         {/* Logo */}
-        <span className="text-white font-bold text-sm tracking-wider hidden sm:block">BRIDGE·IA</span>
+        <span className="text-white font-bold text-sm tracking-wider hidden sm:block">Cracks de IA</span>
         {/* Progress dots */}
         <div className="flex gap-1.5">
           {ALL_MODULES.map((m, i) => (
@@ -166,8 +166,8 @@ function IntroScreen({ onStart }: { onStart: () => void }) {
 
         {/* Title */}
         <h1 className="text-5xl sm:text-7xl font-black tracking-tight mb-4">
-          <span className="gradient-text">BRIDGE</span>
-          <span className="text-white">·</span>
+          <span className="gradient-text">Cracks</span>
+          <span className="text-white"> de </span>
           <span className="text-blue-400">IA</span>
         </h1>
         <p className="text-lg text-slate-400 mb-3 font-medium">
@@ -296,25 +296,34 @@ function QuestionScreen({
           transition={{ duration: 0.35 }}
           className={`glass rounded-2xl p-6 mb-5 border ${colors.border}`}
         >
-          {question.tag && (
-            <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium mb-3 ${colors.badge}`}>
-              {question.tag}
-            </span>
-          )}
-          <h2 className="text-white font-semibold text-base sm:text-lg leading-relaxed mb-1">
-            {question.prompt}
-          </h2>
-          {question.subtitle && (
-            <p className="text-slate-400 text-sm mt-2 pt-2 border-t border-white/8 italic">
-              {question.subtitle}
-            </p>
-          )}
-          <div className={`mt-3 flex items-center gap-2 text-xs ${colors.text}`}>
-            <span>🏆 {question.points} pts</span>
-            {question.partialPoints && (
-              <span className="text-slate-500">· {question.partialPoints} pts (segunda mejor)</span>
-            )}
-          </div>
+          {(() => {
+            const subtitleIsQuestion = question.subtitle &&
+              (question.subtitle.startsWith("¿") || question.subtitle.startsWith("Identifica"));
+            if (subtitleIsQuestion) {
+              return (
+                <>
+                  <h2 className="text-white font-bold text-lg sm:text-xl leading-relaxed mb-3">
+                    {question.subtitle}
+                  </h2>
+                  <div className="bg-slate-800/60 border border-white/10 rounded-xl p-4 text-slate-200 text-sm leading-relaxed">
+                    {question.prompt}
+                  </div>
+                </>
+              );
+            }
+            return (
+              <>
+                <h2 className="text-white font-bold text-lg sm:text-xl leading-relaxed mb-1">
+                  {question.prompt}
+                </h2>
+                {question.subtitle && (
+                  <p className="text-white text-sm font-medium mt-2 pt-2 border-t border-white/8">
+                    {question.subtitle}
+                  </p>
+                )}
+              </>
+            );
+          })()}
         </motion.div>
 
         {/* Options */}
@@ -783,9 +792,9 @@ function ResultsScreen({
         >
           <button
             onClick={onRestart}
-            className="flex-1 py-3 rounded-xl border border-white/15 text-slate-300 hover:border-white/30 hover:text-white transition-all text-sm font-medium"
+            className="flex-1 py-3 rounded-xl bg-gradient-to-r from-green-700 to-emerald-600 hover:from-green-600 hover:to-emerald-500 text-white font-bold text-sm transition-all shadow-lg shadow-green-900/30"
           >
-            Repetir simulador
+            🔄 Volver a jugar — ¡llega al 100%!
           </button>
           <a
             href="/"
@@ -796,7 +805,7 @@ function ResultsScreen({
         </motion.div>
 
         <p className="text-slate-600 text-xs mt-6">
-          BRIDGE·IA — Simulador oficial del Método GARTNER · metodogartner.com
+          Cracks de IA — Simulador oficial del Método GARTNER · metodogartner.com
         </p>
       </div>
     </div>
