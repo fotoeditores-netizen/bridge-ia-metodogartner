@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ALL_MODULES,
@@ -244,10 +244,27 @@ function QuestionScreen({
   const colors = getModuleColor(module.color);
   const progress = ((questionNumber - 1) / totalQuestions) * 100;
 
+  // Shuffle options for Module 3 to prevent pattern-guessing (stable per question render)
+  const { displayOptions, toOriginalIndex } = useMemo(() => {
+    if (module.id !== "module3") {
+      return { displayOptions: question.options, toOriginalIndex: (i: number) => i };
+    }
+    const indices = [0, 1, 2, 3];
+    for (let j = indices.length - 1; j > 0; j--) {
+      const k = Math.floor(Math.random() * (j + 1));
+      [indices[j], indices[k]] = [indices[k], indices[j]];
+    }
+    return {
+      displayOptions: indices.map((i) => question.options[i]),
+      toOriginalIndex: (shuffled: number) => indices[shuffled],
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [question.id, module.id]);
+
   const handleSelect = (i: number) => {
     if (selected !== null) return;
     setSelected(i);
-    onAnswer(i);
+    onAnswer(toOriginalIndex(i));
   };
 
   return (
@@ -328,7 +345,7 @@ function QuestionScreen({
 
         {/* Options */}
         <div className="space-y-3">
-          {question.options.map((opt, i) => (
+          {displayOptions.map((opt, i) => (
             <motion.button
               key={i}
               initial={{ opacity: 0, y: 10 }}
@@ -389,6 +406,11 @@ function FeedbackScreen({
   const isCorrect = selectedAnswer === question.correctIndex;
   const colors = getModuleColor(module.color);
   const isLastQuestion = questionNumber === totalQuestions;
+
+  // Strip celebratory opener when answer is wrong so feedback doesn't say "¡Correcto!" to an incorrect answer
+  const displayFeedback = (!isCorrect && !isPartial)
+    ? question.feedback.replace(/^✅\s*¡(Correcto|Exacto)!\s*/u, "Ten en cuenta que ")
+    : question.feedback;
 
   return (
     <div className="min-h-screen pt-20 pb-8 px-4 flex flex-col items-center justify-start">
@@ -452,7 +474,7 @@ function FeedbackScreen({
           transition={{ delay: 0.15 }}
           className="glass rounded-2xl p-5 mb-4 border border-white/8"
         >
-          <p className="text-slate-300 text-sm leading-relaxed">{question.feedback}</p>
+          <p className="text-slate-300 text-sm leading-relaxed">{displayFeedback}</p>
         </motion.div>
 
         {/* Best practice */}

@@ -134,18 +134,18 @@ export const module1: GameModule = {
     },
     {
       id: "m1-07",
-      prompt: "Prompt Engineering",
+      prompt: "Modelo de IA",
       options: [
-        "Rama de la ingeniería de software orientada al desarrollo y mantenimiento de sistemas de procesamiento de lenguaje natural en arquitecturas de microservicios.",
-        "Disciplina que estudia el diseño, optimización y estructuración de instrucciones en lenguaje natural para obtener respuestas precisas, útiles y consistentes de los modelos de IA.",
-        "Proceso de configuración técnica de parámetros en los servidores que alojan modelos de inteligencia artificial para optimizar su rendimiento computacional.",
-        "Metodología de gestión de proyectos tecnológicos basada en ciclos iterativos cortos y retroalimentación continua de los usuarios finales del sistema."
+        "Plataforma de software con interfaz conversacional que permite a los usuarios interactuar con tecnología de inteligencia artificial mediante mensajes de texto en tiempo real.",
+        "El motor que corre por detrás de las interfaces. ChatGPT, Gemini y Claude son interfaces; GPT-4, Gemini 2.5 y Claude Sonnet son los modelos que procesan y generan las respuestas.",
+        "Sistema de almacenamiento en la nube que guarda el historial de conversaciones y preferencias del usuario para personalizar las respuestas de inteligencia artificial.",
+        "Protocolo de integración que permite conectar diferentes herramientas de inteligencia artificial con aplicaciones empresariales mediante interfaces de programación estandarizadas."
       ],
       correctIndex: 1,
       points: 10,
-      feedback: "✅ ¡Exacto! El Prompt Engineering es la disciplina de diseñar instrucciones efectivas para la IA. No es programación tradicional —es la habilidad de comunicarse con precisión con los modelos de lenguaje para obtener outputs de alta calidad.",
-      bestPractice: "🏆 Mejor práctica: El Prompt Engineering es la habilidad más rentable que puede desarrollar un consultor hoy. La diferencia entre un prompt promedio y uno excelente puede significar 2-3 iteraciones menos por entregable —y eso se acumula en cientos de horas al año.",
-      tag: "Técnicas"
+      feedback: "✅ ¡Exacto! El modelo es el motor real de la IA —no la interfaz que ves. Claude.ai, ChatGPT y Gemini son las interfaces (la 'pantalla'); Claude Sonnet, GPT-4 y Gemini 2.5 son los modelos que hacen el trabajo. Es una distinción clave para elegir la herramienta correcta.",
+      bestPractice: "🏆 Mejor práctica: Cuando evalúes herramientas de IA para un cliente, pregunta siempre qué modelo corre por detrás. Dos interfaces distintas pueden usar el mismo modelo —y dos interfaces idénticas pueden dar resultados muy diferentes si usan modelos distintos.",
+      tag: "Conceptos Base"
     },
     {
       id: "m1-08",
@@ -514,10 +514,10 @@ export const module4: GameModule = {
     {
       id: "m4-01",
       prompt: "Componente de CONTEXTO: ¿Cuál versión proporciona el mejor contexto para el caso de georreferenciación retail?",
-      subtitle: "Caso: Empresa retail con 20 tiendas en Colombia quiere expandirse a ciudades intermedias en 2025.",
+      subtitle: "Caso: Empresa retail con 20 tiendas en Colombia quiere expandirse a ciudades intermedias en 2026.",
       options: [
         "«Dame información actualizada sobre el mercado retail en Colombia y dime cuáles son las ciudades con mayor potencial para abrir nuevas tiendas. Incluye los principales factores que debo considerar para tomar la mejor decisión de expansión del negocio.»",
-        "«Actúa como experto en geomarketing y expansión retail en LATAM. La empresa tiene 20 tiendas en ciudades principales (Bogotá, Medellín, Cali, Barranquilla), factura $45M USD anuales, su ticket promedio es $85 USD y su cliente objetivo es NSE 3-4 (30-55 años). El objetivo es expandirse a 5 ciudades intermedias en 2025 con inversión de $2M por tienda.»",
+        "«Actúa como experto en geomarketing y expansión retail en LATAM. La empresa tiene 20 tiendas en ciudades principales (Bogotá, Medellín, Cali, Barranquilla), factura $45M USD anuales, su ticket promedio es $85 USD y su cliente objetivo es NSE 3-4 (30-55 años). El objetivo es expandirse a 5 ciudades intermedias en 2026 con inversión de $2M por tienda.»",
         "«Necesito que realices un análisis completo del sector retail colombiano. Incluye las tendencias del mercado en los últimos años, el comportamiento del consumidor en diferentes regiones y las oportunidades de expansión más relevantes para una empresa establecida que busca crecer a nuevas ciudades.»",
         "«Analiza el mercado retail colombiano usando todas las fuentes de información disponibles. Identifica las ciudades con mayor potencial de crecimiento para nuevas tiendas, evalúa la competencia en cada mercado y proporciona una recomendación completa sobre dónde abrir las nuevas ubicaciones con la mayor probabilidad de éxito.»"
       ],
