@@ -108,7 +108,7 @@ export default function HeroSection() {
             className="group px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl text-white font-bold text-lg hover:from-amber-400 hover:to-orange-500 transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center gap-2"
           >
             <span>🎮</span>
-            Jugar BRIDGE·IA
+            Jugar CRACKS IA
             <span className="group-hover:translate-x-1 inline-block transition-transform">→</span>
           </a>
           <button
